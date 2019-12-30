@@ -8,4 +8,5 @@
   * A choice of character. Each character has certain upsides/downsides that can impact the players journey.
   * Real galactic stops on the way which include stars in the observable galaxy.
   * Chance! This means that certain algorithms that vary on every playthrough to keep the experience dynamic and unique
-  Through the use of 8-bit style visuals this game will take the player through the challenges that a doomed Earth's inhabitatants would have to face in order to survive.
+  
+  *Through the use of 8-bit style visuals this game will take the player through the challenges that a doomed Earth's inhabitatants would have to face in order to survive.*
