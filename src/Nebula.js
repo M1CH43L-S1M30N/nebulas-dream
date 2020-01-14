@@ -1,6 +1,7 @@
 import Ship from "./Ship";
 import Starfield from "./Starfield";
 import Passenger from "./Character";
+import Event from "./Event";
 
 export default class Nebula {
   constructor(canvas) {
@@ -8,7 +9,8 @@ export default class Nebula {
     this.ctx = canvas.getContext("2d");
     this.dim = { width: canvas.width, height: canvas.height };
     this.ship = new Ship();
-    this.starfield = new Starfield();
+    this.starfield = new Starfield(this.ctx);
+    this.event = new Event();
     this.passengers = [];
     this.scenarios;
     this.paused = false;
@@ -17,12 +19,20 @@ export default class Nebula {
       this.handlePause();
     })
     this.sanitySlice = this.sanitySlice.bind(this);
-    this.handlePause = this.handlePause.bind(this);
+    this.handleEvent = this.handleEvent.bind(this);
+    // this.handlePause = this.handlePause.bind(this);
+    // this.handleBlackHole = this.handleBlackHole.bind(this);
     this.start();
   }
 
-  handleAsteroid() {
-    
+  handleEvent() {
+    let event = this.event.trigger();
+
+    if (true) {
+      let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
+      console.log(`${passenger.name} lost ${event[1]} of sanity!!`)
+      passenger.hazard(event[1]);
+    }
   }
 
 
@@ -31,13 +41,17 @@ export default class Nebula {
   start() {
     this.animate();
     this.populatePassengers();
-    // setInterval(this.sanitySlice, 1000);
+    setInterval(this.sanitySlice, 15000);
+    setInterval(this.handleEvent, 8000);
+    // setTimeout(this.handleBlackHole, 5000);
+    // setTimeout(this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height), 5000);
   }
 
   animate() {
-    if(this.paused) return;
     this.ship.animate(this.ctx);
-    this.starfield.animate(this.ctx);
+    // requestAnimationFrame(this.starfield.animate);
+    // console.log(this.starfield.frame);
+    console.log("wtf")
   }
 
   populatePassengers() {
