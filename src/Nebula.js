@@ -13,6 +13,7 @@ export default class Nebula {
     this.event = new Event();
     this.passengers = [];
     this.scenarios;
+    this.date = Date.now();
     this.paused = false;
     this.pauseButton = document.getElementById("pause");
     this.pauseButton.addEventListener('click', (e) => {
@@ -26,9 +27,13 @@ export default class Nebula {
   }
 
   handleEvent() {
-    let event = this.event.trigger();
 
-    if (true) {
+    let event = this.event.trigger();
+    if (this.passengers) {
+      let ans = prompt(`${event[0]} type [avoid] or [continue]`);
+    }
+
+    if (ans === "avoid") {
       let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
       console.log(`${passenger.name} lost ${event[1]} of sanity!!`)
       passenger.hazard(event[1]);
