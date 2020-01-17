@@ -6,7 +6,7 @@
     <title>Nebulas Dream</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="./nebula.css" type="text/css">
     <style type="text/css">
       canvas {
         border: 1px solid black;
@@ -29,9 +29,12 @@
   </head>
   <body>
     <canvas className="canvas" id="canvas" height="350" width="650"></canvas>
+    <div id="yes-no">
+      <div id="yes"><p class="avoid">AVOID</p></div>
+      <div id="no"><p class="continue">CONTINUE</p></div>
+    </div>
     
-    <button id='pause'>Pause</button>
-    <button id='continue'>Continue</button>
+    <div class="alert-div" id="alert-div-id"><h1 class="alert" id="alert-id"></h1></div>
     <script src="./main.js"></script>
   </body>
 </html>
