@@ -15,46 +15,62 @@ export default class Nebula {
     this.scenarios;
     this.date = Date.now();
     this.paused = false;
-    this.pauseButton = document.getElementById("pause");
-    this.pauseButton.addEventListener('click', (e) => {
-      this.handlePause();
-    })
+    // this.pauseButton = document.getElementById("pause");
     this.sanitySlice = this.sanitySlice.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
+    this.continue = this.continue.bind(this);
     // this.handlePause = this.handlePause.bind(this);
     // this.handleBlackHole = this.handleBlackHole.bind(this);
     this.start();
   }
 
   handleEvent() {
-
+    let alert = document.getElementById("alert-id");
+    let alertDiv = document.getElementById("alert-div-id");
+    
+    let ans;
     let event = this.event.trigger();
-    if (this.passengers) {
-      let ans = prompt(`${event[0]} type [avoid] or [continue]`);
+    
+    if (this.passengers.length) {
+      alert.innerHTML = event[0];
+      alertDiv.style.visibility = "visible"; 
+      // ans = prompt(`${event[0]} type [avoid] or [continue]`);
     }
 
-    if (ans === "avoid") {
-      let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
-      console.log(`${passenger.name} lost ${event[1]} of sanity!!`)
-      passenger.hazard(event[1]);
+    // if (ans === "avoid") {
+    //   let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
+    //   console.log(`${passenger.name} lost ${event[1]} of sanity!!`)
+    //   passenger.hazard(event[1]);
+    // }
+    function disappear() {
+      alertDiv.style.visibility = "hidden";
     }
+    setTimeout(() => {
+      disappear();
+      this.continue();
+    }, 4000);
+    // this.continue();
   }
 
-
+  continue() {
+    this.animate();
+    this.sanitySlice();
+    setTimeout(this.handleEvent, 5000);
+  }
 
 
   start() {
     this.animate();
     this.populatePassengers();
-    setInterval(this.sanitySlice, 15000);
-    setInterval(this.handleEvent, 8000);
+    this.sanitySlice();
+    setTimeout(this.handleEvent, 5000);
     // setTimeout(this.handleBlackHole, 5000);
     // setTimeout(this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height), 5000);
   }
 
   animate() {
     this.ship.animate(this.ctx);
-    // requestAnimationFrame(this.starfield.animate);
+    // this.starfield.animate();
     // console.log(this.starfield.frame);
     console.log("wtf")
   }
@@ -80,11 +96,9 @@ export default class Nebula {
   }
 
   arrayRemove(arr, value) {
-
     return arr.filter(function (ele) {
       return ele != value;
     });
-
   }
 
 }

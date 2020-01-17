@@ -22,7 +22,7 @@ export default class Starfield {
 
     if (imgWidth == width) imgWidth = 0;
 
-    window.requestAnimationFrame(this.animate);
+    // window.requestAnimationFrame(this.animate);
   }
 
   
