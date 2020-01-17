@@ -27,29 +27,58 @@ export default class Nebula {
   handleEvent() {
     let alert = document.getElementById("alert-id");
     let alertDiv = document.getElementById("alert-div-id");
+    let avoid = document.getElementById("yes");
+    let cont = document.getElementById("no");
+    let yesno = document.getElementById("yes-no");
+    let encounterDiv = document.getElementById("encounter-div");
+    let encounter = document.getElementById("encounter");
+
+    function disappear() {
+      alertDiv.style.visibility = "hidden";
+      yesno.style.visibility = "hidden";
+      encounterDiv.style.visibility = "hidden";
+    }
     
     let ans;
     let event = this.event.trigger();
     
     if (this.passengers.length) {
       alert.innerHTML = event[0];
-      alertDiv.style.visibility = "visible"; 
+      alertDiv.style.visibility = "visible";
+      yesno.style.visibility = "visible";
+      
       // ans = prompt(`${event[0]} type [avoid] or [continue]`);
+      avoid.addEventListener("click", () => {
+        let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
+        passenger.hazard(event[1]);
+        ans = `${passenger.name} lost ${event[1]} of sanity!!`;
+        encounter.innerHTML = ans;
+        encounterDiv.style.visibility = "visible";
+        setTimeout(() => {
+          disappear();
+          this.updateSanity();
+        }, 4000);
+        setTimeout(this.continue, 4000);
+      })
+      cont.addEventListener("click", () => {
+        ans = "Crisis Avoided...rerouting";
+        encounter.innerHTML = ans;
+        encounterDiv.style.visibility = "visible";
+        setTimeout(() => {
+          disappear();
+          this.updateSanity();
+        }, 4000);
+        setTimeout(this.continue, 4000);
+      })
     }
+
 
     // if (ans === "avoid") {
     //   let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
     //   console.log(`${passenger.name} lost ${event[1]} of sanity!!`)
     //   passenger.hazard(event[1]);
     // }
-    function disappear() {
-      alertDiv.style.visibility = "hidden";
-    }
-    setTimeout(() => {
-      disappear();
-      this.continue();
-    }, 4000);
-    // this.continue();
+    
   }
 
   continue() {
@@ -78,7 +107,18 @@ export default class Nebula {
   populatePassengers() {
     for (let i = 1; i < 5; i++) {
       let person = prompt(`Enter Passenger #${i}'s name`);
-      this.passengers.push(new Passenger(person));
+      let pass = new Passenger(person);
+      this.passengers.push(pass);
+    }
+  }
+
+  updateSanity() {
+    if (this.passengers) {
+      for (let i = 0; i < this.passengers.length; i++) {
+        let chicken = document.getElementById(`p${i + 1}`);
+        let pass = this.passengers[i];
+        chicken.innerHTML = `${pass.name}'s sanity: ${pass.status.sanity}`;
+      }
     }
   }
 
