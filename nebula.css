@@ -1,3 +1,7 @@
+html {
+  background-image: url("./assets/StarBackground.jpg");
+}
+
 .alert-div {
   background: red;
   height: 80px;
@@ -94,21 +98,41 @@
 }
 
 #p1 {
-  margin-left: 15px;
-  margin-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
 }
 
 #p2 {
-  margin-left: 15px;
-  margin-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
 }
 
 #p3 {
-  margin-left: 15px;
-  margin-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
 }
 
 #p4 {
-  margin-left: 15px;
-  margin-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
 }
