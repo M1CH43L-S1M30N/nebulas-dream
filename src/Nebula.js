@@ -33,6 +33,8 @@ export default class Nebula {
     let encounterDiv = document.getElementById("encounter-div");
     let encounter = document.getElementById("encounter");
 
+    
+
     function disappear() {
       alertDiv.style.visibility = "hidden";
       yesno.style.visibility = "hidden";
@@ -42,49 +44,55 @@ export default class Nebula {
     let ans;
     let event = this.event.trigger();
     
-    if (this.passengers.length) {
+    if (this.passengers) {
       alert.innerHTML = event[0];
       alertDiv.style.visibility = "visible";
       yesno.style.visibility = "visible";
       
       // ans = prompt(`${event[0]} type [avoid] or [continue]`);
-      avoid.addEventListener("click", () => {
+      console.log("setting click handler");
+
+      avoid.onclick = () => {
+        // e.preventDefault();
         let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
         passenger.hazard(event[1]);
         ans = `${passenger.name} lost ${event[1]} of sanity!!`;
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
+          console.log("inside first set timeout about to call continue")
           disappear();
           this.updateSanity();
-        }, 4000);
-        setTimeout(this.continue, 4000);
-      })
-      cont.addEventListener("click", () => {
+          this.continue();
+        }, 3000);
+        // avoid.removeEventListener("click", cbAvoid);
+      }
+
+      cont.onclick = () => {
+        // e.preventDefault();
         ans = "Crisis Avoided...rerouting";
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
           disappear();
           this.updateSanity();
-        }, 4000);
-        setTimeout(this.continue, 4000);
-      })
+          this.continue();
+        }, 3000);
+        // cont.removeEventListener("click", cbCont);
+      }
+      // cont.removeEventListener("click", cbCont);
+      // avoid.removeEventListener("click", cbAvoid);
+      
+      // avoid.addEventListener("click", cbAvoid, { once: true });
+      // cont.addEventListener("click", cbCont, { once: true })
     }
-
-
-    // if (ans === "avoid") {
-    //   let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
-    //   console.log(`${passenger.name} lost ${event[1]} of sanity!!`)
-    //   passenger.hazard(event[1]);
-    // }
-    
   }
 
   continue() {
     this.animate();
     this.sanitySlice();
-    setTimeout(this.handleEvent, 5000);
+    console.log("inside continue")
+    setTimeout(this.handleEvent, 3000);
   }
 
 
@@ -92,7 +100,7 @@ export default class Nebula {
     this.animate();
     this.populatePassengers();
     this.sanitySlice();
-    setTimeout(this.handleEvent, 5000);
+    setTimeout(this.handleEvent, 3000);
     // setTimeout(this.handleBlackHole, 5000);
     // setTimeout(this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height), 5000);
   }
@@ -101,36 +109,37 @@ export default class Nebula {
     this.ship.animate(this.ctx);
     // this.starfield.animate();
     // console.log(this.starfield.frame);
-    console.log("wtf")
+    // console.log("wtf")
   }
 
   populatePassengers() {
     for (let i = 1; i < 5; i++) {
-      let person = prompt(`Enter Passenger #${i}'s name`);
+      let person = `Mike${i}`;
       let pass = new Passenger(person);
       this.passengers.push(pass);
     }
   }
+  // CODE SNIPPET
 
   updateSanity() {
     if (this.passengers) {
       for (let i = 0; i < this.passengers.length; i++) {
-        let chicken = document.getElementById(`p${i + 1}`);
+        let character = document.getElementById(`p${i + 1}`);
         let pass = this.passengers[i];
-        chicken.innerHTML = `${pass.name}'s sanity: ${pass.status.sanity}`;
+        character.innerHTML = `${pass.name}'s sanity: ${pass.status.sanity}`;
       }
     }
   }
+  // CODE SNIPPET
 
   sanitySlice() {
-    // console.log(this)
     this.passengers.forEach(person => {
       console.log(person)
       let res = person.hazard();
       if(!res) {
         alert(`${person.name} went insane!!!`);
         this.passengers = this.arrayRemove(this.passengers, person)
-        console.log(this.passengers)
+        // console.log(this.passengers)
       }
     })
   }

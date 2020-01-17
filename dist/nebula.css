@@ -26,6 +26,7 @@
   display: flex;
   font-family: monospace;
   justify-content: space-between;
+  font-weight: 700;
 }
 
 #encounter-div {
@@ -69,7 +70,7 @@
 }
 
 .avoid {
-  margin-top: 130px;
+  margin-top: 70px;
   font-family: monospace;
   font-weight: 700;
   font-size: 30px;
@@ -77,7 +78,7 @@
 }
 
 .continue {
-  margin-top: 130px;
+  margin-top: 70px;
   font-family: monospace;
   font-weight: 700;
   font-size: 30px;
