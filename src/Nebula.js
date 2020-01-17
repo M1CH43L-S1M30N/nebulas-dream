@@ -13,18 +13,22 @@ export default class Nebula {
     this.event = new Event();
     this.passengers = [];
     this.scenarios;
-    this.date = Date.now();
+    this.time = Date.now();
     this.paused = false;
     // this.pauseButton = document.getElementById("pause");
     this.sanitySlice = this.sanitySlice.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
     this.continue = this.continue.bind(this);
+    this.animate = this.animate.bind(this);
     // this.handlePause = this.handlePause.bind(this);
     // this.handleBlackHole = this.handleBlackHole.bind(this);
     this.start();
   }
 
   handleEvent() {
+
+    this.starfield.animating = false;
+    let timeOne = Date.now();
     let alert = document.getElementById("alert-id");
     let alertDiv = document.getElementById("alert-div-id");
     let avoid = document.getElementById("yes");
@@ -52,7 +56,9 @@ export default class Nebula {
       // ans = prompt(`${event[0]} type [avoid] or [continue]`);
       console.log("setting click handler");
 
-      avoid.onclick = () => {
+      cont.onclick = () => {
+        let timeTwo = Date.now();
+        this.time = this.time + (timeTwo - timeOne);
         // e.preventDefault();
         let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
         passenger.hazard(event[1]);
@@ -60,7 +66,7 @@ export default class Nebula {
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
-          console.log("inside first set timeout about to call continue")
+          console.log((timeTwo - timeOne) / 1000);
           disappear();
           this.updateSanity();
           this.continue();
@@ -68,12 +74,15 @@ export default class Nebula {
         // avoid.removeEventListener("click", cbAvoid);
       }
 
-      cont.onclick = () => {
+      avoid.onclick = () => {
+        let timeTwo = Date.now();
+        this.time = (this.time + 15000) + (timeTwo - timeOne);
         // e.preventDefault();
         ans = "Crisis Avoided...rerouting";
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
+          console.log((timeTwo - timeOne) / 1000);
           disappear();
           this.updateSanity();
           this.continue();
@@ -89,10 +98,15 @@ export default class Nebula {
   }
 
   continue() {
-    this.animate();
-    this.sanitySlice();
-    console.log("inside continue")
-    setTimeout(this.handleEvent, 3000);
+    let endTime = Date.now();
+    if (endTime - this.time >= 20000) {
+      console.log("You made it to Genesis One");
+    } else {
+      this.animate();
+      this.sanitySlice();
+      console.log("inside continue")
+      setTimeout(this.handleEvent, 3000);
+    }
   }
 
 
@@ -107,7 +121,7 @@ export default class Nebula {
 
   animate() {
     this.ship.animate(this.ctx);
-    // this.starfield.animate();
+    this.starfield.animate(this.ctx);
     // console.log(this.starfield.frame);
     // console.log("wtf")
   }
@@ -126,6 +140,11 @@ export default class Nebula {
       for (let i = 0; i < this.passengers.length; i++) {
         let character = document.getElementById(`p${i + 1}`);
         let pass = this.passengers[i];
+        if (pass.status.sanity < 55 && pass.status.sanity > 25) {
+          character.style.borderColor = "orange";
+        } else if (pass.status.sanity <= 25) {
+          character.style.borderColor = "red";
+        }
         character.innerHTML = `${pass.name}'s sanity: ${pass.status.sanity}`;
       }
     }

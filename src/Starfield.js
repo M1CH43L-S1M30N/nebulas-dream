@@ -4,25 +4,29 @@ export default class Starfield {
     this.img = new Image();
     this.img.src = "../dist/assets/stars.png";
     this.animate = this.animate.bind(this);
+    this.animating = false;
+    // this.animating = this.animating.bind(this);
     // this.frame = this.animate();
   }
 
   animate() {
     var width = 650;
     var height = 400;
-    var imgWidth = 0;
+    var imgWidth = 20;
     var scrollSpeed = 5;
     let that = this;
+    this.animating = true;
+    const loop = () => {
+      if(this.animating) {
+        that.ctx.drawImage(that.img, imgWidth, 0);
+        that.ctx.drawImage(that.img, imgWidth - width, 0);
+        imgWidth += scrollSpeed;
+        if (imgWidth == width) imgWidth = 0;
 
-    this.ctx.drawImage(that.img, imgWidth, 0);
-
-    this.ctx.drawImage(that.img, imgWidth - width, 0);
-
-    imgWidth += scrollSpeed;
-
-    if (imgWidth == width) imgWidth = 0;
-
-    // window.requestAnimationFrame(this.animate);
+        window.requestAnimationFrame(loop);
+      }
+    }
+    loop();
   }
 
   
