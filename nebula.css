@@ -14,6 +14,36 @@
   margin-top: 15px;
 }
 
+#sanity {
+  background-color: whitesmoke;
+  height: 80px;
+  width: 650px;
+  z-index: 10;
+  position: fixed;
+  right: 635px;
+  top: 369px;
+  z-index: 5;
+  display: flex;
+  font-family: monospace;
+  justify-content: space-between;
+}
+
+#encounter-div {
+  background: skyblue;
+  height: 80px;
+  width: 650px;
+  z-index: 11;
+  position: fixed;
+  right: 635px;
+  top: 369px;
+  visibility: hidden;
+}
+
+#encounter {
+  font-family: monospace;
+  margin-top: 15px;
+}
+
 #yes {
   height: 280px;
   width: 325px;
@@ -35,6 +65,7 @@
   position: fixed;
   right: 635px;
   top: 99px;
+  visibility: hidden;
 }
 
 .avoid {
@@ -59,4 +90,24 @@
 
 #no:hover {
   background-color: rgba(44, 130, 201, 0.9)
+}
+
+#p1 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#p2 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#p3 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#p4 {
+  margin-left: 15px;
+  margin-right: 15px;
 }
