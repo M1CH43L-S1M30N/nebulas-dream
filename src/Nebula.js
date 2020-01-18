@@ -100,7 +100,7 @@ export default class Nebula {
   continue() {
     let endTime = Date.now();
     if (endTime - this.time >= 20000) {
-      console.log("You made it to Genesis One");
+      console.log("You made it to Genesis Two");
     } else {
       this.animate();
       this.sanitySlice();
