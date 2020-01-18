@@ -2,6 +2,10 @@ html {
   background-image: url("./assets/StarBackground.jpg");
 }
 
+.logo {
+  margin-top: 25px;
+}
+
 .alert-div {
   background: red;
   height: 80px;
@@ -9,7 +13,7 @@ html {
   z-index: 10;
   position: fixed;
   right: 635px;
-  top: 369px;
+  top: 459px;
   visibility: hidden;
 }
 
@@ -25,7 +29,7 @@ html {
   z-index: 10;
   position: fixed;
   right: 635px;
-  top: 369px;
+  top: 459px;
   z-index: 5;
   display: flex;
   font-family: monospace;
@@ -40,7 +44,7 @@ html {
   z-index: 11;
   position: fixed;
   right: 635px;
-  top: 369px;
+  top: 459px;
   visibility: hidden;
 }
 
@@ -69,7 +73,7 @@ html {
   width: 650px;
   position: fixed;
   right: 635px;
-  top: 99px;
+  top: 189px;
   visibility: hidden;
 }
 
