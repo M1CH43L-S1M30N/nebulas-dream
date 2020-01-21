@@ -18,3 +18,7 @@ Welcome to Nebula's Dream. This is the HTML canvas game that I developed using J
 
 ## Hazard
 ![](NebulaIntro.gif)
+
+
+## Code Snippet
+![](CodeSnippet.xcf)
