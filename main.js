@@ -130,7 +130,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Ship; });\nconst CONSTANTS = {\n  HEIGHT: 100,\n  WIDTH: 150\n};\n\nclass Ship {\n  contructor() {\n    this.ship;\n  }\n\n  animate(ctx) {\n    this.drawShip(ctx);\n  }\n\n  drawShip(ctx) {\n    this.ship = new Image();\n    this.ship.src = \"../dist/assets/lastSprite.png\";\n    let that = this;\n    this.ship.onload = function keepDrawing() {\n      ctx.drawImage(that.ship, 400, 160);\n      requestAnimationFrame(keepDrawing);\n    }\n  }\n}\n\n//# sourceURL=webpack:///./src/Ship.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Ship; });\nconst CONSTANTS = {\n  HEIGHT: 100,\n  WIDTH: 150\n};\n\nclass Ship {\n  contructor() {\n    this.ship;\n  }\n\n  animate(ctx) {\n    this.drawShip(ctx);\n  }\n\n  drawShip(ctx) {\n    this.ship = new Image();\n    this.ship.src = \"https://nebulas-dream-public.s3.amazonaws.com/lastSprite.png\";\n    let that = this;\n    this.ship.onload = function keepDrawing() {\n      ctx.drawImage(that.ship, 400, 160);\n      requestAnimationFrame(keepDrawing);\n    }\n  }\n}\n\n//# sourceURL=webpack:///./src/Ship.js?");
 
 /***/ }),
 
@@ -139,9 +139,10 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
   !*** ./src/Starfield.js ***!
   \**************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("throw new Error(\"Module build failed: Error: ENOENT: no such file or directory, open '/home/michael/Documents/Nebulas-Dream/src/Starfield.js'\");\n\n//# sourceURL=webpack:///./src/Starfield.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Starfield; });\nclass Starfield {\n  constructor(ctx) {\n    this.ctx = ctx;\n    this.img = new Image();\n    this.img.src = \"https://nebulas-dream-public.s3.amazonaws.com/stars.png\";\n    this.animate = this.animate.bind(this);\n    this.animating = false;\n    // this.animating = this.animating.bind(this);\n    // this.frame = this.animate();\n  }\n\n  animate() {\n    var width = 650;\n    var height = 400;\n    var imgWidth = 20;\n    var scrollSpeed = 5;\n    let that = this;\n    this.animating = true;\n    const loop = () => {\n      if(this.animating) {\n        that.ctx.drawImage(that.img, imgWidth, 0);\n        that.ctx.drawImage(that.img, imgWidth - width, 0);\n        imgWidth += scrollSpeed;\n        if (imgWidth == width) imgWidth = 0;\n\n        window.requestAnimationFrame(loop);\n      }\n    }\n    loop();\n  }\n\n  \n}\n\n\n\n\n// var canvas = document.getElementById(\"canvas\");\n// console.log(canvas);\n\n// var ctx = canvas.getContext(\"2d\");\n\n// canvas.width = 650;\n// canvas.height = 400;\n\n// var img = new Image();\n\n// img.src = \"../dist/assets/stars.png\";\n\n// window.onload = function() {\n//   var imgWidth = 0;\n\n//   var scrollSpeed = 5;\n\n//   function loop() {\n//     var ship = new Ship();\n//     ship.drawImage(ctx);\n//     ctx.drawImage(img, imgWidth, 0);\n\n//     ctx.drawImage(img, imgWidth - canvas.width, 0);\n\n//     imgWidth += scrollSpeed;\n\n//     if (imgWidth == canvas.width) imgWidth = 0;\n\n//     window.requestAnimationFrame(loop);\n//   }\n\n//   loop();\n//   console.log(\"wow\");\n// }\n\n//# sourceURL=webpack:///./src/Starfield.js?");
 
 /***/ }),
 
