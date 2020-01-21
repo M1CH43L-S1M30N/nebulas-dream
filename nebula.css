@@ -1,0 +1,261 @@
+html {
+  background-image: url("./assets/StarBackground.jpg");
+}
+
+.intro {
+  position: absolute;
+  left: 15px;
+  top: 40px;
+  height: 800px;
+  width: 500px;
+  font-size: 25px;
+  font-family: 'Press Start 2P', cursive;
+  color: whitesmoke;
+}
+
+#instructions-div {
+  position: absolute;
+  right: 15px;
+  top: 40px;
+  height: 800px;
+  width: 500px;
+  font-size: 25px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+}
+
+.logo {
+  margin-top: 25px;
+}
+
+.any-key {
+  background-color: black;
+  height: 80px;
+  width: 650px;
+  z-index: 10;
+  position: fixed;
+  right: 635px;
+  top: 459px;
+  /* visibility: hidden; */
+}
+
+#cover {
+  background-color: black;
+  height: 80px;
+  width: 650px;
+  /* z-index: 10; */
+  position: fixed;
+  right: 635px;
+  top: 459px;
+  visibility: hidden;
+  z-index: 20;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  padding-top: 7px;
+}
+
+#Godspeed {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+}
+
+.press {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  z-index: 19;
+}
+
+.alert-div {
+  background: red;
+  height: 80px;
+  width: 650px;
+  z-index: 10;
+  position: fixed;
+  right: 635px;
+  top: 459px;
+  visibility: hidden;
+}
+
+.alert {
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+#sanity {
+  background-color: whitesmoke;
+  height: 80px;
+  width: 650px;
+  z-index: 10;
+  position: fixed;
+  right: 635px;
+  top: 459px;
+  z-index: 5;
+  display: flex;
+  font-family: 'Press Start 2P', cursive;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+#encounter-div {
+  background: skyblue;
+  height: 80px;
+  width: 650px;
+  z-index: 11;
+  position: fixed;
+  right: 635px;
+  top: 459px;
+  visibility: hidden;
+}
+
+#encounter {
+  font-family: 'Press Start 2P', cursive;
+  margin-top: 15px;
+}
+
+#yes {
+  height: 280px;
+  width: 325px;
+  text-align: center;
+  background-color: rgba(44, 130, 201, 0.5)
+}
+
+#no {
+  height: 280px;
+  width: 325px;
+  text-align: center;
+  background-color: rgba(44, 130, 201, 0.5)
+}
+
+#yes-no {
+  display: flex;
+  height: 350px;
+  width: 650px;
+  position: fixed;
+  right: 635px;
+  top: 189px;
+  visibility: hidden;
+}
+
+.avoid {
+  margin-top: 70px;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 700;
+  font-size: 30px;
+  opacity: 0.7;
+}
+
+.continue {
+  margin-top: 70px;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 700;
+  font-size: 30px;
+  opacity: 0.7;
+}
+
+#yes:hover {
+  background-color: rgba(44, 130, 201, 0.9)
+}
+
+#no:hover {
+  background-color: rgba(44, 130, 201, 0.9)
+}
+
+#p1 {
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
+}
+
+#p2 {
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
+}
+
+#p3 {
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
+}
+
+#p4 {
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 9px solid;
+  border-color: greenyellow;
+  background-color: black;
+  color: white;
+  padding-top: 10px;
+}
+
+#death-div {
+  visibility: hidden;
+  position: absolute;
+  right: 634px;
+  margin-top: 180px;
+  height: 350px;
+  width: 650px;
+  background-image: linear-gradient(red, yellow);
+  z-index: 30;
+}
+
+#death {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px;
+  margin-top: 150px;
+}
+
+#winner-div {
+  visibility: hidden;
+  position: absolute;
+  right: 635px;
+  margin-top: 181px;
+  height: 350px;
+  width: 650px;
+  background-image: url("./assets/genesisTwo.jpg");
+  z-index: 30;
+}
+
+#winner {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  -webkit-text-stroke: 1px black;
+  font-size: 25px;
+  margin-top: 50px;
+}
+
+#game-over-div {
+  visibility: hidden;
+  position: absolute;
+  right: 635px;
+  margin-top: 181px;
+  height: 350px;
+  width: 650px;
+  background: black;
+  z-index: 100;
+}
+
+#game-over {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px;
+  margin-top: 60px;
+}
