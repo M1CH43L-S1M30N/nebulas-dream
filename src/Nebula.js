@@ -15,7 +15,7 @@ export default class Nebula {
     this.scenarios;
     this.time = Date.now();
     this.paused = false;
-    this.names = ["Tommy", "Carly", "Martin", "Mashu"]
+    this.names = ["Martin", "Carly", "Martin", "Mashu"]
     // this.pauseButton = document.getElementById("pause");
     this.sanitySlice = this.sanitySlice.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
