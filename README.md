@@ -20,5 +20,9 @@ Welcome to Nebula's Dream. This is the HTML canvas game that I developed using J
 ![](NebulaIntro.gif)
 
 
-## Code Snippet
-![](CodeSnippet.xcf)
+## Sanity Algorithm
+![](CodeSnippet.png)
+
+This game's key feature is sanity of each passenger. I created a Passenger class which along with storing that passengers sanity out of 100, had a function which handled randomly slicing the sanity of each passenger as time went by. On top of this when the player had a catastrophe one random passenger would lose a certain amount of sanity. In order to keep track of each character's sanity level I wrote the function above which was repeatedly called after each event. I iterated through `this.passengers` which stored the Passenger objects and based on the sanity level, it updated the color of the border accordingly.
+
+
