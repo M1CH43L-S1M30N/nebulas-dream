@@ -58,7 +58,7 @@ export default class Nebula {
       yesno.style.visibility = "visible";
       
       // ans = prompt(`${event[0]} type [avoid] or [continue]`);
-      console.log("setting click handler");
+      // console.log("setting click handler");
 
       cont.onclick = () => {
         let timeTwo = Date.now();
@@ -70,7 +70,7 @@ export default class Nebula {
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
-          console.log((timeTwo - timeOne) / 1000);
+          // console.log((timeTwo - timeOne) / 1000);
           disappear();
           this.updateSanity();
           this.continue();
@@ -86,7 +86,7 @@ export default class Nebula {
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
-          console.log((timeTwo - timeOne) / 1000);
+          // console.log((timeTwo - timeOne) / 1000);
           disappear();
           this.updateSanity();
           this.continue();
@@ -127,7 +127,7 @@ export default class Nebula {
     } else {
       this.animate();
       this.sanitySlice();
-      console.log("inside continue")
+      // console.log("inside continue")
       setTimeout(this.handleEvent, 9000);
     }
   }
@@ -194,7 +194,7 @@ export default class Nebula {
       insane.style.visibility = "hidden";
     }
     this.passengers.forEach(person => {
-      console.log(person)
+      // console.log(person)
       let res = person.hazard();
       if(!res) {
         insane.innerHTML = `${person.name} went insane!!!`;
