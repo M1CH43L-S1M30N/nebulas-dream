@@ -14,7 +14,7 @@ export default class Ship {
 
   drawShip(ctx) {
     this.ship = new Image();
-    this.ship.src = "../dist/assets/lastSprite.png";
+    this.ship.src = "https://nebulas-dream-public.s3.amazonaws.com/lastSprite.png";
     let that = this;
     this.ship.onload = function keepDrawing() {
       ctx.drawImage(that.ship, 400, 160);
