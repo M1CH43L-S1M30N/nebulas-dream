@@ -11,7 +11,7 @@ export default class Event {
 
   trigger() {
     var rand = this.events[Math.floor(Math.random() * this.events.length)];
-    return [rand, Math.floor(Math.random() * 10 + 1)];
+    return [rand, Math.floor(Math.random() * 10 + 8)];
   }
 
 

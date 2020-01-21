@@ -5,7 +5,7 @@ export default class Character {
   }
 
   hazard(n) {
-    const rand = n || Math.floor(Math.random() * 5 + 1);
+    const rand = n || Math.floor(Math.random() * 10 + 5);
     
     this.status.sanity -= rand;
     

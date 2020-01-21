@@ -39,10 +39,33 @@ html {
   /* visibility: hidden; */
 }
 
+#cover {
+  background-color: black;
+  height: 80px;
+  width: 650px;
+  /* z-index: 10; */
+  position: fixed;
+  right: 635px;
+  top: 459px;
+  visibility: hidden;
+  z-index: 20;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  padding-top: 7px;
+}
+
+#Godspeed {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+}
+
 .press {
   color: white;
   font-family: 'Press Start 2P', cursive;
   font-size: 20px;
+  z-index: 19;
 }
 
 .alert-div {
@@ -75,6 +98,7 @@ html {
   font-family: 'Press Start 2P', cursive;
   justify-content: space-between;
   font-weight: 700;
+  font-size: 13px;
 }
 
 #encounter-div {
@@ -179,4 +203,59 @@ html {
   background-color: black;
   color: white;
   padding-top: 10px;
+}
+
+#death-div {
+  visibility: hidden;
+  position: absolute;
+  right: 634px;
+  margin-top: 180px;
+  height: 350px;
+  width: 650px;
+  background-image: linear-gradient(red, yellow);
+  z-index: 30;
+}
+
+#death {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px;
+  margin-top: 150px;
+}
+
+#winner-div {
+  visibility: hidden;
+  position: absolute;
+  right: 635px;
+  margin-top: 181px;
+  height: 350px;
+  width: 650px;
+  background-image: url("./assets/genesisTwo.jpg");
+  z-index: 30;
+}
+
+#winner {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  -webkit-text-stroke: 1px black;
+  font-size: 25px;
+  margin-top: 50px;
+}
+
+#game-over-div {
+  visibility: hidden;
+  position: absolute;
+  right: 635px;
+  margin-top: 181px;
+  height: 350px;
+  width: 650px;
+  background: black;
+  z-index: 100;
+}
+
+#game-over {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 25px;
+  margin-top: 60px;
 }

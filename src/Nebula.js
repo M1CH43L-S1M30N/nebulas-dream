@@ -15,17 +15,21 @@ export default class Nebula {
     this.scenarios;
     this.time = Date.now();
     this.paused = false;
+    this.names = ["Tommy", "Carly", "Martin", "Mashu"]
     // this.pauseButton = document.getElementById("pause");
     this.sanitySlice = this.sanitySlice.bind(this);
     this.handleEvent = this.handleEvent.bind(this);
     this.continue = this.continue.bind(this);
     this.animate = this.animate.bind(this);
+    this.populatePassengers = this.populatePassengers.bind(this);
     // this.handlePause = this.handlePause.bind(this);
     // this.handleBlackHole = this.handleBlackHole.bind(this);
     this.start();
   }
 
   handleEvent() {
+    let cover = document.getElementById("cover");
+    cover.style.visibility = "hidden";
 
     this.starfield.animating = false;
     let timeOne = Date.now();
@@ -62,7 +66,7 @@ export default class Nebula {
         // e.preventDefault();
         let passenger = this.passengers[Math.floor(Math.random() * this.passengers.length)];
         passenger.hazard(event[1]);
-        ans = `${passenger.name} lost ${event[1]} of sanity!!`;
+        ans = `CATASTROPHE!  ${passenger.name} lost ${event[1]} of sanity!!`;
         encounter.innerHTML = ans;
         encounterDiv.style.visibility = "visible";
         setTimeout(() => {
@@ -76,7 +80,7 @@ export default class Nebula {
 
       avoid.onclick = () => {
         let timeTwo = Date.now();
-        this.time = (this.time + 15000) + (timeTwo - timeOne);
+        this.time = (this.time + 10000) + (timeTwo - timeOne);
         // e.preventDefault();
         ans = "Crisis Avoided...rerouting";
         encounter.innerHTML = ans;
@@ -98,23 +102,44 @@ export default class Nebula {
   }
 
   continue() {
+    let winnerDiv = document.getElementById("winner-div");
+    let winner = document.getElementById("winner");
+    let final;
+
     let endTime = Date.now();
-    if (endTime - this.time >= 20000) {
-      console.log("You made it to Genesis Two");
+    if (endTime - this.time >= 95000) {
+      this.starfield.animating = false;
+      let count = 0
+      this.passengers.forEach(p => {
+        if (p.status.sanity > 1) {
+          count = count + 1;
+        }
+      })
+      if(count === 4) {
+        final = "The journey was long and unforgiving, but alas you and your family can begin your second chance at life on Genesis Two!!";
+      } else {
+        final = "Though all of you may not be mentally fit to contribute to society, at least some of you, with enough rehab will be able to begin your second chance at life on Genesis Two!!";
+      }
+
+      winner.innerHTML = `Congratulations! ${final}`;
+      winnerDiv.style.visibility = "visible";
+      // console.log("You made it to Genesis Two");
     } else {
       this.animate();
       this.sanitySlice();
       console.log("inside continue")
-      setTimeout(this.handleEvent, 3000);
+      setTimeout(this.handleEvent, 9000);
     }
   }
 
 
   start() {
+    let cover = document.getElementById("cover");
+    cover.style.visibility = "visible";
     this.animate();
     this.populatePassengers();
     this.sanitySlice();
-    setTimeout(this.handleEvent, 3000);
+    setTimeout(this.handleEvent, 9000);
     // setTimeout(this.handleBlackHole, 5000);
     // setTimeout(this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height), 5000);
   }
@@ -127,8 +152,8 @@ export default class Nebula {
   }
 
   populatePassengers() {
-    for (let i = 1; i < 5; i++) {
-      let person = `Mike${i}`;
+    for (let i = 0; i < 4; i++) {
+      let person = this.names[i];
       let pass = new Passenger(person);
       this.passengers.push(pass);
     }
@@ -136,7 +161,13 @@ export default class Nebula {
   // CODE SNIPPET
 
   updateSanity() {
-    if (this.passengers) {
+    let alive = false;
+    this.passengers.forEach(p => {
+      if (p.status.sanity > 0) {
+        alive = true;
+      }
+    })
+    if (alive) {
       for (let i = 0; i < this.passengers.length; i++) {
         let character = document.getElementById(`p${i + 1}`);
         let pass = this.passengers[i];
@@ -147,17 +178,30 @@ export default class Nebula {
         }
         character.innerHTML = `${pass.name}'s sanity: ${pass.status.sanity}`;
       }
+    } else {
+      let gameOverDiv = document.getElementById("game-over-div");
+      let gameOver = document.getElementById("game-over");
+
+      gameOver.innerHTML = "The journey to Genesis Two proved too much for you and your family. You are left to drift the void, until the end of time!... GAME OVER";
+      gameOverDiv.style.visibility = "visible";
     }
   }
   // CODE SNIPPET
 
   sanitySlice() {
+    let insane = document.getElementById("death");
+    function disappear() {
+      insane.style.visibility = "hidden";
+    }
     this.passengers.forEach(person => {
       console.log(person)
       let res = person.hazard();
       if(!res) {
-        alert(`${person.name} went insane!!!`);
-        this.passengers = this.arrayRemove(this.passengers, person)
+        insane.innerHTML = `${person.name} went insane!!!`;
+        insane.style.visibility = "visible";
+        // alert(`${person.name} went insane!!!`);
+        // this.passengers = this.arrayRemove(this.passengers, person)
+        setTimeout(disappear, 3000);
         // console.log(this.passengers)
       }
     })
