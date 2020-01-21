@@ -2,7 +2,7 @@ export default class Starfield {
   constructor(ctx) {
     this.ctx = ctx;
     this.img = new Image();
-    this.img.src = "../dist/assets/stars.png";
+    this.img.src = "https://nebulas-dream-public.s3.amazonaws.com/stars.png";
     this.animate = this.animate.bind(this);
     this.animating = false;
     // this.animating = this.animating.bind(this);
