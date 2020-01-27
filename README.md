@@ -24,6 +24,7 @@ This project in particular took me out of my comfort zone, especially when it ca
 The "difficulty" of this game lies in the handling of the Obstacles that you come across. I made it so that there are pros and cons to both choices in the game. The objective is to make it to the end with as many passengers as possible so its coded so that avoiding the obstacle moderately affects all the passengers where as continuing through it greatly impacts a single passenger. Balancing both of these options leads to a balanced yet completely random playthrough each time.
 
 
+
 ## Sanity Algorithm
 ![](CodeSnippet.png)
 
