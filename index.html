@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Nebulas Dream</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./nebula.css" type="text/css">
+    <style type="text/css">
+      canvas {
+        border: 1px solid black;
+        background: lightgray;
+        text-align: center;
+        /* margin: 0 auto; */
+        right: 634px;
+        margin-top: 180px;
+        position: fixed;
+      }
+
+      body {
+        text-align: center;
+      }
+    </style>
+
+    <link rel='icon' href='../favicon.ico' type='image/x-icon'/>
+  </head>
+  <body>
+    <div id="game-over-div"><p id="game-over"></p></div>
+    <div id="winner-div"><p id="winner"></p></div>
+    <div id="death-div"><p id="death"></p></div>
+    <div id="cover"><p id="Godspeed">Godspeed on your journey!!!</p></div>
+    <div class="intro" id="intro"><p class="intro-txt">In the year 2077, Earth is no longer inhabitable. The only hope for humanity lies in Genesis Two. A distant planet, well
+    outside our solar system in another galaxy called the Nebula Galaxy. Families that cannot afford the official SpaceX
+    flight, have to craft a makeshift spacecraft and traverse the stars alone. With such a primitive design the journey is
+    long. Very long. With abundant resources on the spacecraft, each person’s only obstacle to Genesis Two is, maintaining
+    one’s sanity. </p></div>
+    <div id="instructions-div"><p id="instructions">"The path to Genesis Two is treacherous. Dangerous obstacles along the route are inevitable. When you come across an obstacle, you have two choices. You can either choose to avoid the obstacle, which will spare the crew any mental stress, however will lengthen the journey which can have its own side effects. Or you can choose to continue the course and hope for the best. Be mindful of the crew's mental state. The goal is to get them back in the best shape possible. Good luck!."</p></div>
+    <img class="logo" src="./assets/Nebulas.png" alt="">
+    <div id="any-key-id" class="any-key"><p class="press">Press any key to start</p></div>
+    <canvas className="canvas" id="canvas" height="350" width="650"></canvas>
+    <div id="yes-no">
+      <button id="yes"><p class="avoid">AVOID</p></button>
+      <button id="no"><p class="continue">CONTINUE</p></button>
+    </div>
+    <div id="sanity">
+      <div id="p1"></div>
+      <div id="p2"></div>
+      <div id="p3"></div>
+      <div id="p4"></div>
+    </div>
+    
+    <div class="alert-div" id="alert-div-id"><h1 class="alert" id="alert-id"></h1></div>
+    <div id="encounter-div"><h1 class="alert" id="encounter"></h1></div>
+    <script src="./main.js"></script>
+  </body>
+</html>
+<!-- <script src="../src/Starfield.js"></script> -->
