@@ -22,6 +22,8 @@ let ctx = canvas.getContext("2d");
 const ship = new Ship();
 const starfield = new Starfield(ctx);
 
+window.alert("If on Apple machine, set zoom to 75% for best experience")
+
 ship.animate(ctx);
 starfield.animate(ctx);
 
